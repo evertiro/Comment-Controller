@@ -3,7 +3,7 @@ Contributors: section214
 Tags: comments, comment, disable
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 Selectively disable comments on a per-user basis
 
@@ -24,6 +24,9 @@ Comment Controller allows users to disable display of comments for their account
 None yet
 
 == Changelog ==
+
+= Version 1.0.3 =
+* Prettify post type names
 
 = Version 1.0.2 =
 * Update readme >_<
