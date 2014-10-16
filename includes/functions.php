@@ -27,6 +27,12 @@ function commentcontroller_maybe_show_comments( $user_id, $post_id = false ) {
     if( $post_id ) {
         $post_type  = get_post_type();
         $post_types = commentcontroller_get_option( 'disabled_post_types', array() );
+        $author_id  = get_the_author_meta( 'ID' );
+        $author     = get_userdata( $author_id );
+
+        if( $author->commentcontroller_disallow ) {
+            $return = false;
+        }
 
         if( in_array( $post_type, $post_types ) ) {
             $return = false;

@@ -22,13 +22,15 @@ if( ! defined( 'ABSPATH' ) ) exit;
 function commentcontroller_profile_field( $user ) {
     $user = get_userdata( $user->ID );
 
+    echo '<h3>' . __( 'Comment Controller', 'comment-controller' ) . '</h3>';
+
     if( commentcontroller_maybe_show_profile_option() ) {
         ?>
         <table class="form-table">
             <tbody>
                 <tr>
                     <th>
-                        <label for="commentcontroller-disable"><?php _e( 'Disable Comments', 'comment-controller' ); ?></label>
+                        <label for="commentcontroller-disable"><?php _e( 'Hide Comments', 'comment-controller' ); ?></label>
                     </th>
                     <td>
                         <input name="commentcontroller-disable" type="checkbox" id="commentcontroller-disable" value="1" <?php checked( 1, $user->commentcontroller_disable, true ); ?>/>
@@ -39,6 +41,21 @@ function commentcontroller_profile_field( $user ) {
         </table>
         <?php
     }
+    ?>
+    <table class="form-table">
+        <tbody>
+            <tr>
+                <th>
+                    <label for="commentcontroller-disallow"><?php _e( 'Disable Comments', 'comment-controller' ); ?></label>
+                </th>
+                <td>
+                    <input name="commentcontroller-disallow" type="checkbox" id="commentcontroller-disallow" value="1" <?php checked( 1, $user->commentcontroller_disallow, true ); ?>/>
+                    <span class="description"><?php _e( 'Prevent users from commenting on my posts.', 'comment-controller' ); ?></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <?php
 }
 add_action( 'show_user_profile', 'commentcontroller_profile_field' );
 add_action( 'edit_user_profile', 'commentcontroller_profile_field' );
@@ -52,10 +69,18 @@ add_action( 'edit_user_profile', 'commentcontroller_profile_field' );
  * @return      void
  */
 function commentcontroller_update_field( $user_id ) {
-    if( current_user_can( 'edit_user', $user_id ) && isset( $_POST['commentcontroller-disable'] ) ) {
-        update_user_meta( $user_id, 'commentcontroller_disable', true );
-    } else {
-        delete_user_meta( $user_id, 'commentcontroller_disable' );
+    if( current_user_can( 'edit_user', $user_id ) ) {
+        if( isset( $_POST['commentcontroller-disable'] ) ) {
+            update_user_meta( $user_id, 'commentcontroller_disable', true );
+        } else {
+            delete_user_meta( $user_id, 'commentcontroller_disable' );
+        }
+
+        if( isset( $_POST['commentcontroller-disallow'] ) ) {
+            update_user_meta( $user_id, 'commentcontroller_disallow', true );
+        } else {
+            delete_user_meta( $user_id, 'commentcontroller_disallow' );
+        }
     }
 }
 add_action( 'personal_options_update', 'commentcontroller_update_field' );
