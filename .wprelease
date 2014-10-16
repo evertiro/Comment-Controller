@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# WPRelease configuration file
+
+# Plugin slug
+SHORTNAME="comment-controller"
+
+# Plugin configuration
+PLUGINPATH=`pwd`
+MAINFILE="comment-controller.php"
+
+# Subversion configuration
+SVNUSER="section214"
+
+# Path for SVN temp directory
+SVNPATH=".wprsvn"
