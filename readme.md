@@ -1,6 +1,6 @@
 # Comment Controller #
 
-Comment Controller allows users to disable display of comments for their account. Future versions will allow site operators to selectively disable comments per-user, per-post-type or per-role as well.
+Comment Controller allows users to disable display of comments for their account, and allows site admins to selectively disable comments per-post-type or per-role.
 
 ## Installation ##
 

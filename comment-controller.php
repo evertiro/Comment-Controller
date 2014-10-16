@@ -3,7 +3,7 @@
  * Plugin Name:     Comment Controller
  * Plugin URI:      http://section214.com
  * Description:     Selectively disable comments on a per-user basis
- * Version:         1.0.3
+ * Version:         1.0.4
  * Author:          Daniel J Griffiths
  * Author URI:      http://section214.com
  * Text Domain:     comment-controller
