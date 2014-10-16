@@ -3,13 +3,13 @@ Contributors: section214
 Tags: comments, comment, disable
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Selectively disable comments on a per-user basis
 
 == Description ==
 
-Comment Controller allows users to disable display of comments for their account. Future versions will allow site operators to selectively disable comments per-user, per-post-type or per-role as well.
+Comment Controller allows users to disable display of comments for their account.
 
 **Follow this plugin on [GitHub](https://github.com/Section214/Comment-Controller)**
 
@@ -24,6 +24,9 @@ Comment Controller allows users to disable display of comments for their account
 None yet
 
 == Changelog ==
+
+= Version 1.0.2 =
+* Update readme >_<
 
 = Version 1.0.1 =
 * Added option to globally disable based on post type
