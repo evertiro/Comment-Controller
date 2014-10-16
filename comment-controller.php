@@ -79,8 +79,18 @@ if( ! class_exists( 'CommentController' ) ) {
          * @return      void
          */
         private function includes() {
+            global $commentcontroller_options;
+
+            require_once COMMENTCONTROLLER_DIR . 'includes/admin/settings/register.php';
+            $commentcontroller_options = commentcontroller_get_settings();
+
             require_once COMMENTCONTROLLER_DIR . 'includes/functions.php';
             require_once COMMENTCONTROLLER_DIR . 'includes/profile.php';
+
+            if( is_admin() ) {
+                require_once COMMENTCONTROLLER_DIR . 'includes/admin/pages.php';
+                require_once COMMENTCONTROLLER_DIR . 'includes/admin/settings/display.php';
+            }
         }
 
 
