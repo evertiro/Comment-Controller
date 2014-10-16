@@ -130,11 +130,23 @@ add_filter( 'comments_open', 'commentcontroller_show_comment_form', 999, 2 );
  * @return      array $post_types The valid post types
  */
 function commentcontroller_get_post_types() {
-    $post_types = get_post_types( array(
+    $post_types = array();
+
+    $raw_post_types = get_post_types( array(
         'public'    => true
     ) );
 
-    unset( $post_types['attachment'] );
+    unset( $raw_post_types['attachment'] );
+
+    foreach( $raw_post_types as $post_type ) {
+        $object = get_post_type_object( $post_type );
+
+        if( $object->labels->singular_name ) {
+            $post_types[$post_type] = $object->labels->singular_name;
+        } else {
+            $post_types[$post_type] = $post_type;
+        }
+    }
 
     return $post_types;
 }
